@@ -13,12 +13,35 @@ Shoes.app :title => "Zoltan's Calculator", :width => 240, :height => 240, do
       button "=" do
         eval_expression
       end
+
+      button "C" do
+        clear_expression
+      end
+
+      button "2\u207f" do
+        power_of_two
+      end
+
     end
     
   end
   
   # Stick a string on the end of our input
   #
+
+  def power_of_two
+    @input = eval(@input)
+    @input = 2**@input
+    @input = @input.to_s
+    @output.text = @input
+  end
+
+  def clear_expression
+    @input = eval(@input)
+    @input = nil
+    @output.text = @input
+  end  
+
   def append(s)
     if @input.nil?
       @input = ""
@@ -33,5 +56,7 @@ Shoes.app :title => "Zoltan's Calculator", :width => 240, :height => 240, do
     @input = eval(@input).to_s
     @output.text = @input
   end
+
+  # 
   
 end

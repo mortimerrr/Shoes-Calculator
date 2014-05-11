@@ -63,6 +63,7 @@ Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 300, do
   def square_root
     @input = eval(@input)
     @input = Math.sqrt(@input)
+    @input = @input.to_s
     @output.text = @input
   end
   

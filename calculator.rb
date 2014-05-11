@@ -1,20 +1,15 @@
-Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 300, do
+Shoes.app :title => "Zoltan's Calculator", :width => 200, :height => 300, do
   background "#388E8E".."#F90",
   :scroll => false
   stack :margin => 20 do
-    @output = edit_line width: 120
+    @output = edit_line width: 140
     
     flow :width => "150", do
-      %w(0 1 2 3 4 5 6 7 8 9 + - *).each do |op|      
+      %W(9 8 7 6 5 4 3 2 1 0 + - * \u00F7 = C 2\u207F \u221A log\u2082).each do |op|      
         button op do         
-          append op
-        end
-      end
-      
-      @special_buttons = ["\u00F7","=","C","2\u207F","\u221A","log\u2082"]
-      @special_buttons.each do |x|
-        button x do
-          case x
+          case op
+            when ('0'..'9')
+              append(op + ".0") 
             when "="
               eval_expression
             when "C"
@@ -27,9 +22,12 @@ Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 300, do
               square_root
             when "log\u2082"
               log_base_2
+            else
+              append op
           end
         end
       end
+      
 
     end
   end

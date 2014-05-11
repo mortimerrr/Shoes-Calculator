@@ -1,4 +1,4 @@
-Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 280, do
+Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 300, do
   background "#388E8E".."#F90",
   :scroll => false
   stack :margin => 20 do
@@ -21,6 +21,10 @@ Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 280, do
 
       button "2\u207f" do
         power_of_two
+      end
+
+      button "\u221a" do
+        square_root
       end
 
     end
@@ -51,12 +55,15 @@ Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 280, do
   end
   
   # Evaluate the input we've got so far
-  #
   def eval_expression
     @input = eval(@input).to_s
     @output.text = @input
   end
 
-  # 
+  def square_root
+    @input = eval(@input)
+    @input = Math.sqrt(@input)
+    @output.text = @input
+  end
   
 end

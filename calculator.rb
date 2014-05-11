@@ -5,37 +5,35 @@ Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 300, do
     @output = edit_line width: 120
     
     flow :width => "150", do
-      %w(0 1 2 3 4 5 6 7 8 9 + / * -).each do |op|      
+      %w(0 1 2 3 4 5 6 7 8 9 + - *).each do |op|      
         button op do         
           append op
         end
       end
       
-      button "=" do
-        eval_expression
-      end
-
-      button "C" do
-        clear_expression
-      end
-
-      button "2\u207f" do
-        power_of_two
-      end
-
-      button "\u221a" do
-        square_root
-      end
-
-      button "log\u2082" do
-        log_base_2
+      @special_buttons = ["\u00F7","=","C","2\u207F","\u221A","log\u2082"]
+      @special_buttons.each do |character|
+        button character do
+          case character
+            when "="
+              eval_expression
+            when "C"
+              clear_expression
+            when "\u00F7"
+              append character
+            when "2\u207F"
+              power_of_two
+            when "\u221A"
+              square_root
+            when "log\u2082"
+              log_base_2
+          end
+        end
       end
 
     end
-    
   end
   
-  # Stick a string on the end of our input
 
   def power_of_two
     @input = eval(@input)
@@ -50,6 +48,7 @@ Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 300, do
     @output.text = @input
   end  
 
+  # Stick a string on the end of our input
   def append(s)
     if @input.nil?
       @input = ""

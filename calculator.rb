@@ -5,7 +5,7 @@ Shoes.app :title => "Zoltan's Calculator", :width => 200, :height => 300, do
     @output = edit_line width: 140
     
     flow :width => "150", do
-      %W(9 8 7 6 5 4 3 2 1 0 + - * \u00F7 = C 2\u207F \u221A log\u2082).each do |op|      
+      %W(9 8 7 6 5 4 3 2 1 0 + - * \u00F7 = C 2\u207F \u221A log\u2082).each do |op|  # %w and %W not the same!!!    
         button op do         
           case op
             when ('0'..'9')

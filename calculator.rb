@@ -1,9 +1,10 @@
-Shoes.app :title => "Zoltan's Calculator", :width => 240, :height => 240, do
-  background "#388E8E".."#F90"
+Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 280, do
+  background "#388E8E".."#F90",
+  :scroll => false
   stack :margin => 20 do
     @output = edit_line width: 120
     
-    flow :width => "120px" , do
+    flow :width => "120px", do
       %w(0 1 2 3 4 5 6 7 8 9 + / * -).each do |op|      
         button op do         
           append op

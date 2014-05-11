@@ -1,7 +1,7 @@
 Shoes.app :title => "Zoltan's Calculator", :width => 240, :height => 240, do
   background "#388E8E".."#F90"
   stack :margin => 20 do
-    @output = edit_line
+    @output = edit_line width: 120
     
     flow :width => "120px" , do
       %w(0 1 2 3 4 5 6 7 8 9 + / * -).each do |op|      
@@ -27,7 +27,6 @@ Shoes.app :title => "Zoltan's Calculator", :width => 240, :height => 240, do
   end
   
   # Stick a string on the end of our input
-  #
 
   def power_of_two
     @input = eval(@input)

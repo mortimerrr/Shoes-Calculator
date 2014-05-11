@@ -12,18 +12,18 @@ Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 300, do
       end
       
       @special_buttons = ["\u00F7","=","C","2\u207F","\u221A","log\u2082"]
-      @special_buttons.each do |character|
-        button character do
-          case character
+      @special_buttons.each do |x|
+        button x do
+          case x
             when "="
               eval_expression
             when "C"
               clear_expression
             when "\u00F7"
-              append character
+              append "/"
             when "2\u207F"
               power_of_two
-            when "\u221A"
+            when "\u221A" 
               square_root
             when "log\u2082"
               log_base_2

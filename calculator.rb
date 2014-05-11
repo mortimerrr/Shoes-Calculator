@@ -4,7 +4,7 @@ Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 300, do
   stack :margin => 20 do
     @output = edit_line width: 120
     
-    flow :width => "120px", do
+    flow :width => "150", do
       %w(0 1 2 3 4 5 6 7 8 9 + / * -).each do |op|      
         button op do         
           append op
@@ -25,6 +25,10 @@ Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 300, do
 
       button "\u221a" do
         square_root
+      end
+
+      button "log\u2082" do
+        log_base_2
       end
 
     end
@@ -63,6 +67,13 @@ Shoes.app :title => "Zoltan's Calculator", :width => 180, :height => 300, do
   def square_root
     @input = eval(@input)
     @input = Math.sqrt(@input)
+    @input = @input.to_s
+    @output.text = @input
+  end
+
+  def log_base_2
+    @input = eval(@input)
+    @input = Math.log2(@input)
     @input = @input.to_s
     @output.text = @input
   end
